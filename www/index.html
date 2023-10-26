@@ -153,6 +153,8 @@
     var active = false;
     var startTime = 0;
     var period = 0;
+   
+    
 
     
     // ボタンの初期設定
@@ -189,6 +191,7 @@
     // ButtonBがクリックされた時の処理
     function btnBClick(e){
         active = false;
+       
         
     }
 
@@ -208,13 +211,16 @@
         if(active) {
             var time = parseInt( (new Date() - startTime)/1000 );
             var rest = period - time;
-            $("#time").html("経過時間： " + time);
             $("#remain").html("残り時間： " + rest);
+            $("#time").html("経過時間： " + time);
             analog(rest);
 
             if(rest <= 0){
                 active = false;
                 alarm();
+            }
+            if(rest <= 10){
+                $("body").css("background-color","greenyellow");
             }
             
         } 
